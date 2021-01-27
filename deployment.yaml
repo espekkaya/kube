@@ -18,10 +18,6 @@ spec:
       labels:
         app: eafad-api
     spec:
-      volumes:
-      - name: log-pv-storage
-        persistentVolumeClaim:
-            claimName: log-pv-claim
       containers:
       - name: eafad-api
         image: espekkaya/demo:v1.1
