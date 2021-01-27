@@ -1,0 +1,32 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: eafad-api
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: eafad-api
+  replicas: 3 # tells deployment to run 6 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: eafad-api
+    spec:
+      volumes:
+      - name: log-pv-storage
+        persistentVolumeClaim:
+            claimName: log-pv-claim
+      containers:
+      - name: eafad-api
+        image: dockerregistry.afad.gov.tr:5000/eafad-api:version2.45
+        ports:
+        - containerPort: 7002
+        volumeMounts:
+            - name: log-pv-storage
+              mountPath: "/media/DATA2"
