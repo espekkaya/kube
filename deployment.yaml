@@ -24,9 +24,6 @@ spec:
             claimName: log-pv-claim
       containers:
       - name: eafad-api
-        image: dockerregistry.afad.gov.tr:5000/eafad-api:version2.45
+        image: espekkaya/demo:v1.1
         ports:
-        - containerPort: 7002
-        volumeMounts:
-            - name: log-pv-storage
-              mountPath: "/media/DATA2"
+        - containerPort: 9001
