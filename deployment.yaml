@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: eafad-api
-  replicas: 3 # tells deployment to run 6 pods matching the template
+  replicas: 4 # tells deployment to run 6 pods matching the template
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -27,7 +27,7 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           timeoutSeconds: 2
           periodSeconds: 3
           failureThreshold: 1
