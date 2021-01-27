@@ -22,7 +22,7 @@ spec:
       - name: eafad-api
         image: espekkaya/demo:v1.1
         ports:
-        - nodePort: 8080
+        - NodePort: 8080
         readinessProbe:
           httpGet:
             path: /actuator/health
